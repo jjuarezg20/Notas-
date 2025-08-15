@@ -6,3 +6,54 @@
   </head>
   <body></body>
 </html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="/esen-notas.css">
+  <style>
+    .login-page{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#f9fbff;padding:16px}
+    .login-logo{display:block;margin:0 auto 20px auto;max-width:160px;height:auto}
+    #login{width:min(420px,92vw);margin:0 auto;padding:28px 24px;border-radius:14px;background:#fff;border:1px solid #e5e7eb;box-shadow:0 12px 30px rgba(2,8,23,.08)}
+    #login h2{font-size:24px;margin:0 0 14px;color:#2e3a55}
+    #login label{display:block;margin:10px 0 6px;color:#64748b}
+    #login input{width:100%;height:44px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:10px}
+    #login button{width:100%;height:44px;margin-top:12px;border-radius:10px;font-weight:600;background:#2e3a55;color:#fff;border:1px solid #2e3a55;cursor:pointer}
+    #mensaje{color:#c02626;min-height:1.25em;margin-top:8px}
+  </style>
+</head>
+<body class="login-page">
+  <div id="login">
+    <img src="/logo-esen.png" alt="Logo ESEN" class="login-logo">
+    <h2>Iniciar Sesión</h2>
+    <form onsubmit="return validarLogin(event)">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" required />
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" required />
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
+
+  <script>
+    function validarLogin(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value;
+      const mensaje = document.getElementById("mensaje");
+
+      if (usuario === "20235076" && clave === "Zepito0211#NicoTheo1") {
+        window.location.assign("/Notas.html");            // mayúsculas exactas
+      } else if (usuario === "20235020" && clave === "20235020") {
+        window.location.assign("/notas-isaias.html");     // todo minúsculas
+      } else {
+        mensaje.textContent = "Usuario o contraseña incorrectos";
+      }
+    }
+  </script>
+</body>
+</html>

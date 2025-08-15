@@ -1,17 +1,53 @@
-<body>
-    <div id="login">
-        <h2>Iniciar Sesión</h2>
-        <form onsubmit="return validarLogin(event)">
-            <label for="usuario">Usuario:</label>
-            <input type="text" id="usuario" required><br><br>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login</title>
+  <link rel="stylesheet" href="esen-notas.css">
+  <style>
+    /* Logo dentro del card */
+    .login-logo {
+      display: block;
+      margin: 0 auto 20px auto;
+      max-width: 160px;
+      height: auto;
+    }
+  </style>
+</head>
+<body class="login-page">
+  <div id="login">
+    <!-- Logo dentro del cuadro -->
+    <img src="logo-esen.png" alt="Logo ESEN" class="login-logo">
 
-            <label for="clave">Contraseña:</label>
-            <input type="password" id="clave" required><br><br>
+    <h2>Iniciar Sesión</h2>
+    <form onsubmit="return validarLogin(event)">
+      <label for="usuario">Usuario:</label>
+      <input type="text" id="usuario" required />
 
-            <button type="submit">Entrar</button>
-        </form>
-        <p id="mensaje" style="color:red;"></p>
-    </div>
+      <label for="clave">Contraseña:</label>
+      <input type="password" id="clave" required />
 
-    <div id="contenido" style="display:none;">
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="mensaje"></p>
+  </div>
 
+  <script>
+    function validarLogin(event) {
+      event.preventDefault();
+      const usuario = document.getElementById("usuario").value.trim();
+      const clave = document.getElementById("clave").value;
+      const mensaje = document.getElementById("mensaje");
+
+      if (usuario === "20235076" && clave === "Zepito0211#NicoTheo1") {
+        window.location.href = "Notas.html";
+      } else if (usuario === "20235020" && clave === "20235020") {
+        window.location.href = "Notas-Isaias.html";
+      } else {
+        mensaje.textContent = "Usuario o contraseña incorrectos";
+      }
+    }
+  </script>
+</body>
+</html>

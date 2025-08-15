@@ -1,0 +1,421 @@
+/* =========================================================
+   ESEN - Historial de Calificaciones
+   Archivo: esen-notas.css
+   ========================================================= */
+
+/* ---------- Reset & Variables ---------- */
+:root{
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --text: #2e3a55;
+  --muted: #64748b;
+  --border: #e5e7eb;
+  --brand: #2e3a55;
+  --brand-2: #3b82f6;
+  --success-bg: #e6f5ea;
+  --danger-bg: #fce8e6;
+  --focus: #2563eb;
+  --shadow: 0 4px 14px rgba(2, 8, 23, .06);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body {
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.4;
+}
+
+/* ---------- Helpers ---------- */
+.container{
+  width: min(1200px, 95vw);
+  margin: 20px auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.container-inner{ padding: 16px; }
+.hidden{ display: none !important; }
+
+/* ---------- Header ---------- */
+header{
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 10px rgba(2, 8, 23, .05);
+}
+.header-content{
+  width: min(1200px, 95vw);
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+.header-title{
+  margin: 0;
+  font-size: clamp(16px, 2.2vw, 20px);
+  font-weight: 700;
+  color: var(--brand);
+}
+nav{
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+nav a{
+  color: var(--brand);
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+nav a:hover{
+  background: var(--surface-2);
+  border-color: var(--border);
+}
+nav a:focus{
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.cum-box{
+  justify-self: end;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px 12px;
+  width: 74px;
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: 800;
+  color: var(--brand);
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Leyenda ---------- */
+.legend{
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 10px 16px;
+  width: min(1200px, 95vw);
+  margin: 8px auto 0 auto;
+  color: var(--muted);
+  font-size: 14px;
+}
+.legend div{ display: inline-flex; align-items: center; gap: 8px; }
+.legend-color{
+  width: 14px; height: 14px;
+  border-radius: 3px; border: 1px solid var(--border);
+}
+.color-equivalencia{ background: var(--success-bg); }
+.color-reprobada{ background: var(--danger-bg); }
+
+/* ---------- Tabla ---------- */
+.table-wrapper{ overflow-x: auto; border-top: 1px solid var(--border); }
+table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 720px;
+}
+thead th{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--surface-2);
+  color: var(--brand);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+  font-weight: 700;
+}
+tbody td{
+  border-top: 1px solid var(--border);
+  padding: 10px 8px;
+  text-align: center;
+  white-space: nowrap;
+}
+tbody tr:hover td{ background: #fafafa; }
+.trimester-header td{
+  text-align: left !important;
+  font-weight: 800;
+  background: var(--surface-2);
+  color: var(--brand);
+  border-top: 2px solid var(--border);
+}
+.highlight-equivalencia td{ background: var(--success-bg); }
+.highlight-reprobada td{ background: var(--danger-bg); }
+tbody tr:not(.trimester-header):nth-child(even) td{
+  background: #fcfdff;
+}
+
+/* ---------- Footer ---------- */
+footer{
+  width: min(1200px, 95vw);
+  margin: 14px auto 24px auto;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+
+/* ---------- Botones & inputs ---------- */
+input[type="text"],
+input[type="password"],
+button{ font: inherit; }
+button{
+  background: var(--brand);
+  color: #fff;
+  border: 1px solid var(--brand);
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: filter .15s ease, transform .02s ease;
+}
+button:hover{ filter: brightness(1.05); }
+button:active{ transform: translateY(1px); }
+
+/* ---------- Página Login ---------- */
+#login{
+  width: min(360px, 92vw);
+  margin: 8vh auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+#login h2{
+  margin: 0 0 10px 0;
+  color: var(--brand);
+  font-size: 22px;
+}
+#login label{
+  display: block;
+  margin: 8px 0 6px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+#login input{
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+#mensaje{ color: #c02626; min-height: 1.25em; margin-top: 8px; }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 720px){
+  .header-content{ grid-template-columns: 1fr; gap: 10px; }
+  .cum-box{ justify-self: start; }
+  nav{ gap: 10px; }
+  .container{ margin: 12px auto; border-radius: 8px; }
+  .container-inner{ padding: 10px; }
+}
+
+/* ---------- Impresión ---------- */
+@media print{
+  header, nav a[href*="Login.html"], #login { display: none !important; }
+  .container, .header-content, .legend, footer{ width: 100%; box-shadow: none; border: 0; }
+  table{ font-size: 12px; }
+}
+
+/* ====== LOGIN (ajuste sin clase en body) ====== */
+#login{
+  width: min(420px, 94vw);
+  margin: 14vh auto 8vh;         /* lo baja visualmente */
+  padding: 28px 24px;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(2,8,23,.08);
+  border: 1px solid var(--border);
+  background: #fff;
+}
+
+#login h2{ font-size: 24px; margin: 0 0 14px; }
+#login label{ display:block; margin:10px 0 6px; color:var(--muted); }
+#login input{
+  width:100%; height:44px; padding:10px 12px;
+  border:1px solid var(--border); border-radius:10px;
+  transition:border-color .15s, box-shadow .15s;
+}
+#login input:focus{
+  outline:none; border-color:var(--focus);
+  box-shadow:0 0 0 4px rgba(37,99,235,.12);
+}
+#login button{
+  width:100%; height:44px; margin-top:12px; border-radius:10px; font-weight:600;
+}
+
+/* Header mejorado */
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(1200px, 95vw);
+  margin: 0 auto;
+  padding: 14px 16px;
+  gap: 20px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 48px;   /* ajusta tamaño del logo */
+  width: auto;
+}
+
+.header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--brand);
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logout-btn {
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s ease;
+}
+
+.logout-btn:hover {
+  background: #1e293b; /* un poco más oscuro */
+}
+
+/* ================== LOGIN RESPONSIVE ================== */
+
+/* Estructura base responsiva */
+.login-page{
+  /* 100% de alto considerando barras móviles */
+  min-height: 100svh;
+  padding: 16px;
+  padding-bottom: calc(env(safe-area-inset-bottom, 0) + 16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* centrado vertical */
+  gap: 14px;
+  background: #f9fbff;
+}
+
+/* Logo fuera del card */
+.login-logo{
+  width: min(200px, 60vw);
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 2px 6px rgba(2,8,23,.06));
+}
+
+/* Card del login */
+#login{
+  width: min(420px, 92vw);
+  margin: 0 auto;
+  padding: clamp(18px, 2.2vw + 12px, 28px);
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 30px rgba(2,8,23,.08);
+}
+
+/* Tipografía e inputs fluidos */
+#login h2{
+  font-size: clamp(20px, 2.6vw, 24px);
+  margin: 0 0 12px;
+}
+#login label{
+  display: block;
+  margin: 10px 0 6px;
+  color: var(--muted);
+  font-size: clamp(13px, 1.6vw, 14px);
+}
+#login input{
+  width: 100%;
+  height: clamp(42px, 5.5vw, 46px);
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: border-color .15s, box-shadow .15s;
+  background: #fff;
+}
+#login input:focus{
+  outline: none;
+  border-color: var(--focus);
+  box-shadow: 0 0 0 4px rgba(37,99,235,.12);
+}
+#login button{
+  width: 100%;
+  height: clamp(42px, 5.5vw, 46px);
+  margin-top: 12px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+/* ====== Breakpoints ====== */
+@media (max-width: 600px){
+  .login-logo{
+    width: min(150px, 46vw);
+    margin-bottom: 4px;
+  }
+  #login{
+    width: 100%;
+    max-width: 480px;
+    border-radius: 12px;
+    box-shadow: 0 8px 22px rgba(2,8,23,.06);
+  }
+}
+
+@media (min-width: 1024px){
+  .login-page{
+    gap: 18px;
+  }
+  .login-logo{
+    width: 220px;
+  }
+  #login{
+    width: 420px; /* tamaño cómodo en desktop grande */
+  }
+}
+
+/* Accesibilidad: menos animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce){
+  * { transition: none !important; }
+}

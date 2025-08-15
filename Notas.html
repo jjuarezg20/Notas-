@@ -503,6 +503,19 @@
                 }
             }
         });
+        function validarLogin(event) {
+        event.preventDefault();
+        const usuario = document.getElementById("usuario").value;
+        const clave = document.getElementById("clave").value;
+        const mensaje = document.getElementById("mensaje");
+
+        if (usuario === "20235076" && clave === "Zepito0211#NicoTheo1") {
+            document.getElementById("login").style.display = "none";
+            document.getElementById("contenido").style.display = "block";
+        } else {
+            mensaje.textContent = "Usuario o contraseña incorrectos";
+        }
+    }
     </script>
 </body>
 </html>

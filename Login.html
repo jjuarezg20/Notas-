@@ -38,11 +38,12 @@
       const mensaje = document.getElementById("mensaje");
 
       if (usuario === "20235076" && clave === "Zepito0211#NicoTheo1") {
-        window.location.assign("/Notas.html");            // mayúsculas exactas
+       window.location.assign("/Notas.html");           // N mayúscula
       } else if (usuario === "20235020" && clave === "20235020") {
-        window.location.assign("/notas-isaias.html");     // todo minúsculas
+       window.location.assign("/notas-isaias.html");    // todo minúsculas
       } else {
-        mensaje.textContent = "Usuario o contraseña incorrectos";
+        mensaje.textContent = "Usuario o contraseña incorrectos.";
+        mensaje.style.color = "#c02626"; // Rojo
       }
     }
   </script>

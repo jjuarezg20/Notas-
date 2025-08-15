@@ -41,12 +41,14 @@
       const mensaje = document.getElementById("mensaje");
 
       if (usuario === "20235076" && clave === "Zepito0211#NicoTheo1") {
-        window.location.href = "Notas.html";
-      } else if (usuario === "20235020" && clave === "20235020") {
-        window.location.href = "notas-isaias.html";
-      } else {
-        mensaje.textContent = "Usuario o contraseña incorrectos";
-      }
+      window.location.href = "Notas.html";            // ✅ así está bien
+    } else if (usuario === "20235020" && clave === "20235020") {
+      window.location.href = "notas-isaias.html";     // ✅ debe ser en minúsculas
+    } else {
+      mensaje.textContent = "Usuario o contraseña incorrectos";
+    }
+      mensaje.style.color = "red";
+
     }
   </script>
 </body>
